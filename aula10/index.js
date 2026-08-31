@@ -11,11 +11,3 @@ const aprovado = true; //boolean
 const reprovado = false; //boolean
 
 console.log(typeof nome, num1, num2, nomeAluno, sobrenomeAluno, aprovado, reprovado);
-
-const a = [1, 2]; //array
-const b = a;
-
-console.log(a, b);
-
-b.push(3);
-console.log(a, b); // [1, 2, 3] [1, 2, 3] - array é um tipo de objeto e é passado por referencia

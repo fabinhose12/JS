@@ -9,7 +9,5 @@ console.log(nome); // Maria
 
 //let nao deixa redeclarar 
 
-let idade = 30;
-let idade = 40; // erro
 
 //nao criar variavel sem const ou log (regra suprema)

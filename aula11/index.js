@@ -29,3 +29,7 @@ const num6 = 'fa';
 
 console.log(num5 * num6); // '10fa'
 console.log(num5 - num6); // NaN
+
+/* ParseInt = converte string para numero inteiro
+parseFloat = converte string para numero decimal  
+*/
