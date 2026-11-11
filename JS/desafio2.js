@@ -73,6 +73,38 @@ function darBaixa(id, quantidade) {
   return produto;
 }
 
+function adicionarEstoque(id, quantidade) {
+  // 1. Valida se a quantidade é um número válido e maior que zero
+  const quantidadeConvertida = parseInt(quantidade, 10);
+  if (isNaN(quantidadeConvertida) || quantidadeConvertida <= 0) {
+    return { error: "Quantidade inválida" };
+  }
+
+  // 2. Identifica o produto
+  const produto = identificarProduto(id);
+  if (produto.error) {
+    return produto;
+  }
+
+  // 3. Atualiza o estoque
+  const estoqueAnterior = produto.estoque;
+  produto.estoque += quantidadeConvertida;
+  const estoqueAtual = produto.estoque;
+
+  // 4. Registra a movimentação
+  registrarMovimentacao(
+    produto,
+    quantidadeConvertida,
+    estoqueAnterior,
+    estoqueAtual,
+  );
+
+  return produto;
+}
+
 console.log(identificarProduto(2));
 console.log(historico);
 console.log(darBaixa(1, 10)); // Estoque insuficiente
+console.log(adicionarEstoque(3, -3)); // Remove 3 do estoque do Teclado
+console.log(adicionarEstoque(1, 25)); // Adiciona 25 ao estoque do Notebook
+console.log(adicionarEstoque(2, 10)); // Adiciona 10 ao estoque do Mouse
