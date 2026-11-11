@@ -102,9 +102,14 @@ function adicionarEstoque(id, quantidade) {
   return produto;
 }
 
+function consultarHistorico(id) {
+  return historico.filter((m) => m.produto.id === id);
+}
+
 console.log(identificarProduto(2));
 console.log(historico);
+console.log(consultarHistorico(1));
 console.log(darBaixa(1, 10)); // Estoque insuficiente
-console.log(adicionarEstoque(3, -3)); // Remove 3 do estoque do Teclado
+console.log(adicionarEstoque(3, -3)); // retorna quantidade invalida
 console.log(adicionarEstoque(1, 25)); // Adiciona 25 ao estoque do Notebook
 console.log(adicionarEstoque(2, 10)); // Adiciona 10 ao estoque do Mouse
