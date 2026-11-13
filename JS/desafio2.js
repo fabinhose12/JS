@@ -114,6 +114,14 @@ function registrarSaida(id, quantidade) {
   return resultado;
 }
 
+function registrarEntrada(id, quantidade) {
+  const resultado = adicionarEstoque(id, quantidade);
+  if (resultado.error) {
+    return resultado; // Retorna o objeto de erro
+  }
+  return resultado;
+}
+
 console.log(identificarProduto(2));
 console.log(historico);
 console.log(consultarHistorico(1));
@@ -122,3 +130,4 @@ console.log(adicionarEstoque(3, -3)); // retorna quantidade invalida
 console.log(adicionarEstoque(1, 25)); // Adiciona 25 ao estoque do Notebook
 console.log(adicionarEstoque(2, 10)); // Adiciona 10 ao estoque do Mouse
 console.log(registrarSaida(1, 5)); // Registra uma saída de 5 unidades do Notebook
+console.log(registrarEntrada(2, 15)); // Registra uma entrada de 15 unidades do Mouse
