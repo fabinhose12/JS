@@ -59,6 +59,31 @@ function registrarEntrada(idProduto: number, quantidade: number): ResultadoOpera
   };
 }
 
+function registrarSaida(idProduto: number, quantidade: number): ResultadoOperacao {
+  const produto = produtos.find((p) => p.id === idProduto);
+  if (!produto) {
+    return { sucesso: false, mensagem: "Produto não encontrado" };
+  }
+  if (quantidade <= 0) {
+    return {
+      sucesso: false,
+      mensagem: "Quantidade inválida"
+    };
+  }
+  if (produto.stock < quantidade) {
+    return {
+      sucesso: false,
+      mensagem: "Estoque insuficiente"
+    };
+  }
+  produto.stock -= quantidade;
+
+  return {
+    sucesso: true,
+    produto: produto
+  };
+}
+
 console.log(consultarProduto(1)); // Output: Produto A
 console.log(consultarProduto(3)); // Output: Produto não encontrado
 console.log(registrarEntrada(1, 20));
@@ -66,3 +91,8 @@ console.log(registrarEntrada(2, 10));
 console.log(registrarEntrada(1, 0));
 console.log(registrarEntrada(1, -5));
 console.log(registrarEntrada(99, 10));
+console.log(registrarSaida(1, 10));
+console.log(registrarSaida(2, 60));
+console.log(registrarSaida(1, 0));
+console.log(registrarSaida(1, -5));
+console.log(registrarSaida(99, 10));
